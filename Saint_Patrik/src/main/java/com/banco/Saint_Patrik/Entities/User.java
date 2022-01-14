@@ -1,8 +1,11 @@
 package com.banco.Saint_Patrik.Entities;
 
+import com.banco.Saint_Patrik.Enum.Role;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -24,6 +27,9 @@ public class User {
     private String mail;
     private Boolean enabled;
 
+    @Enumerated(EnumType.STRING)
+    private Role typeRole;
+
     @OneToMany//(cascade = CascadeType.ALL)
     private List<Card> card;
 
@@ -31,16 +37,17 @@ public class User {
     private List<Transaction> transaction;
 
     public User() {
-         this.enabled = true;
+        this.enabled = true;
     }
 
-    public User(String id, String name, String surname, String document, String mail, Boolean enabled, List<Card> card, List<Transaction> transaction) {
+    public User(String id, String name, String surname, String document, String mail, Boolean enabled, Role typeRole, List<Card> card, List<Transaction> transaction) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.document = document;
         this.mail = mail;
         this.enabled = enabled;
+        this.typeRole = typeRole;
         this.card = card;
         this.transaction = transaction;
     }
@@ -130,6 +137,20 @@ public class User {
     }
 
     /**
+     * @return the typeRole
+     */
+    public Role getTypeRole() {
+        return typeRole;
+    }
+
+    /**
+     * @param typeRole the typeRole to set
+     */
+    public void setTypeRole(Role typeRole) {
+        this.typeRole = typeRole;
+    }
+
+    /**
      * @return the card
      */
     public List<Card> getCard() {
@@ -159,7 +180,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", document=" + document + ", mail=" + mail + ", enabled=" + enabled + ", card=" + card + ", transaction=" + transaction + '}';
+        return "User{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", document=" + document + ", mail=" + mail + ", enabled=" + enabled + ", typeRole=" + typeRole + ", card=" + card + ", transaction=" + transaction + '}';
     }
 
 }
