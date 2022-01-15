@@ -27,7 +27,7 @@ public class CardService {
      * @throws ServiceError
      */
     @Transactional(readOnly = true)
-    public Double searchcardByIdCard(String id) throws ServiceError {
+    public Double searchcardAmountByIdCard(String id) throws ServiceError {
         try {
             Card card = cardRepository.searchById(id);
             return card.getCredit();

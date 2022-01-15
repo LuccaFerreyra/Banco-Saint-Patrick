@@ -38,7 +38,7 @@ public class CardController {
         if (login == null) {
             return "redirect:/login";
         }
-        Double creditCard = cardService.searchcardByIdCard(cardId); 
+        Double creditCard = cardService.searchcardAmountByIdCard(cardId); 
         model.addAttribute("credit", creditCard);
 
         

@@ -3,17 +3,30 @@ package com.banco.Saint_Patrik.Services;
 import com.banco.Saint_Patrik.Entities.Card;
 import com.banco.Saint_Patrik.Entities.User;
 import com.banco.Saint_Patrik.Errors.ServiceError;
+import com.banco.Saint_Patrik.Repositories.CardRepository;
 import com.banco.Saint_Patrik.Repositories.UserRepository;
+import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService{
 
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    private CardRepository cardRepository;
 
     /**
      *
@@ -61,5 +74,38 @@ public class UserService {
         }
         return userRepository.searchById(idUser);
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String CardNumber) throws UsernameNotFoundException {
+//       Card card=cardRepository.searchCardByNumberCard(CardNumber);
+//       
+//       
+//        if (card!=null) {
+//             List<GrantedAuthority> permisos = new ArrayList<>();
+//
+//            /*Creo una lista de permisos - "ROLE_" + cliente.getRol() - concateno la palabra ROL con el enumerador
+//            ADMIN O USUARIO*/
+//            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_" + userlog.getTypeRole());
+//            permisos.add(p1);
+//
+//            //Esto me permite guardar el OBJETO USUARIO LOGUEADO, para luego ser utilizado
+//            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+//            
+//            /* HttpSession - RETIENE Y MANTIENE INFORMACIÓN DE LA SESIÓN LOGUEADA CON CIERTO USUARIO*/
+//            HttpSession session = attr.getRequest().getSession(true);
+//
+//            session.setAttribute("clienteSession", userlog); // llave + valor
+//
+//            org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(userlog.getDocument(), userlog.getId(), permisos);//el user getid esta mal tiene que ir la clave
+//
+//            return user;
+//
+//        } else {
+//            
+            return null;
+        }
+//        }
+    
+    
 
 }
