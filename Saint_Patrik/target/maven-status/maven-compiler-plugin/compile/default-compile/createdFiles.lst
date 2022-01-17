@@ -15,3 +15,4 @@ com\banco\Saint_Patrik\Repositories\UserRepository.class
 com\banco\Saint_Patrik\SaintPatrikApplication.class
 com\banco\Saint_Patrik\Repositories\CardRepository.class
 com\banco\Saint_Patrik\Controller\UserController.class
+com\banco\Saint_Patrik\Controller\LoginController.class

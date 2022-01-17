@@ -25,8 +25,12 @@ public interface CardRepository extends JpaRepository<Card, String> {
     //BUSCO TARJETAS POR "BAJA"
     @Query("SELECT c from Card c WHERE c.enabled = false ORDER BY c.numberCard ASC")
     public List<Card> searchCardByDisabled();
-    
+
     //BUSCO TARJETAS POR NUMERO DE TARJETA
     @Query("SELECT c from Card c WHERE c.numberCard = :NumberCard")
     public Card searchCardByNumberCard(@Param("NumberCard") String NumberCard);
+
+    //BUSCO TARJETAS POR USUARIO
+    @Query("SELECT c from Card c WHERE c.user.id = :id")
+    public Card searchCardByUser(@Param("id") String id);
 }
