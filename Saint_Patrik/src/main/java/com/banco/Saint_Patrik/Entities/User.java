@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -32,9 +33,11 @@ public class User {
 
     @OneToMany//(cascade = CascadeType.ALL)
     private List<Card> card;
+//    private Card card;
 
     @OneToMany//(cascade = CascadeType.ALL)
     private List<Transaction> transaction;
+//    private Transaction transaction;
 
     public User() {
         this.enabled = true;
@@ -180,7 +183,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", document=" + document + ", mail=" + mail + ", enabled=" + enabled + ", typeRole=" + typeRole + ", card=" + card + ", transaction=" + transaction + '}';
+        return "User{" + "id=" + getId() + ", name=" + getName() + ", surname=" + getSurname() + ", document=" + getDocument() + ", mail=" + getMail() + ", enabled=" + getEnabled() + ", typeRole=" + getTypeRole() + ", card=" + getCard() + ", transaction=" + getTransaction() + '}';
     }
 
 }
