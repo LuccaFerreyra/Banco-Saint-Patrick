@@ -62,7 +62,7 @@ public class CardService {
      * @throws ServiceError
      */
     @Transactional
-    public void unable(String idUser, String cardId) throws ServiceError {
+    public void disable(String idUser, String cardId) throws ServiceError {
         try {
             Card card = cardRepository.searchById(cardId);
 
@@ -82,7 +82,7 @@ public class CardService {
      * @throws ServiceError
      */
     @Transactional
-    public void able(String idUser, String cardId) throws ServiceError {
+    public void enable(String idUser, String cardId) throws ServiceError {
         try {
             Card card = cardRepository.searchById(cardId);
 

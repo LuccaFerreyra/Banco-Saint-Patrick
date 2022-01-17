@@ -74,12 +74,12 @@ public class CardController {
      * @param cardId
      * @return 
      */
-    @PostMapping("/unable")
-    public String unableCard(HttpSession session, @RequestParam String cardId){
+    @PostMapping("/disable")
+    public String disableCard(HttpSession session, @RequestParam String cardId){
         
         try {
             User login = (User)session.getAttribute("usersession");
-            cardService.unable(login.getId(), cardId);
+            cardService.disable(login.getId(), cardId);
         } catch (ServiceError ex) {
             Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -92,12 +92,12 @@ public class CardController {
      * @param cardId
      * @return 
      */
-    @PostMapping("/able")
-    public String ableCard(HttpSession session, @RequestParam String cardId){
+    @PostMapping("/enable")
+    public String enableCard(HttpSession session, @RequestParam String cardId){
         
         try {
             User login = (User)session.getAttribute("usersession");
-            cardService.able(login.getId(), cardId);
+            cardService.enable(login.getId(), cardId);
         } catch (ServiceError ex) {
             Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
         }

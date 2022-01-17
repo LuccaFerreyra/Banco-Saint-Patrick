@@ -14,14 +14,15 @@ public interface CardRepository extends JpaRepository<Card, String> {
     @Query("SELECT c FROM Card c ORDER BY c.numberCard")
     public List<Card> searchAll();
 
-    //BUSCO LAS TARJETAS POR ID DE TARJETA
+    //BUSCO LA TARJETA POR ID DE TARJETA
     @Query("SELECT c FROM Card c WHERE c.id = :id")
     public Card searchById(@Param("id") String id);
 
+    //BUSCO TARJETAS POR "ALTA"
     @Query("SELECT c from Card c WHERE c.enabled = true ORDER BY c.numberCard ASC")
     public List<Card> searchCardByEnabled();
 
-    //BUSCO TARJETAS POR BAJAS
+    //BUSCO TARJETAS POR "BAJA"
     @Query("SELECT c from Card c WHERE c.enabled = false ORDER BY c.numberCard ASC")
     public List<Card> searchCardByDisabled();
     

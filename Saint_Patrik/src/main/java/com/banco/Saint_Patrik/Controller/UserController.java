@@ -45,6 +45,7 @@ public class UserController {
     }
 
     //BUSCA UN USUARIO ESPECIFICO
+    @GetMapping("/usersSearch")
     public String user(ModelMap model, @RequestParam String idUser) throws ServiceError {
         try {
             model.addAttribute("user", service.user(idUser));
