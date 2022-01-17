@@ -43,4 +43,12 @@ public interface UserRepository extends JpaRepository<User, String> {
     @Query("SELECT u from User u WHERE u.enabled = false ORDER BY u.surname ASC")
     public List<User> searchUserByDisabled();
 
+    //BUSCO UN USUARIO POR ID DE TARJETA
+    @Query("SELECT u.card FROM User u WHERE u.id = :id")
+    public User searchUserByIdCard(@Param("id") String id);
+
+    //BUSCO UNA TARJETA POR ID DE USUARIO
+    @Query("SELECT c.user from Card c WHERE c.id = :id ")
+    public User searchCardByUser(@Param("id") String id);
+
 }
