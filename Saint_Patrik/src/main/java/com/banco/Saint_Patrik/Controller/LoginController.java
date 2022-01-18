@@ -12,7 +12,7 @@ public class LoginController {
         return "index.html";
     }
     
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/main")
     public String inicio() {
         return "main.html";
