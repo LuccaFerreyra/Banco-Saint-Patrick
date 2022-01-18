@@ -32,7 +32,7 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/newTransaction")
     public String newTransaction(ModelMap model, RedirectAttributes redirectAttributes) throws ServiceError {
 
@@ -44,7 +44,7 @@ public class TransactionController {
         return "redirect:/";
     }
 
-     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/newTransaction")
     public String newTransaction(ModelMap model,
             @RequestParam(required = false) String idUser,
@@ -69,6 +69,7 @@ public class TransactionController {
             return "redirect:/";
         }
     }
+
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/transactionByLast30Days/{idUser}")
     public String transactionByLast30Days(ModelMap model,
