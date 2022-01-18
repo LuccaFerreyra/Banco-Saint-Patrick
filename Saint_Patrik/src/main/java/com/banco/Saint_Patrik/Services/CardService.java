@@ -123,9 +123,15 @@ public class CardService implements UserDetailsService {
         return cardRepository.searchCardByDisabled();
     }
 
+    /**
+     *
+     * @param cardNumber
+     * @return
+     * @throws UsernameNotFoundException
+     */
     @Override
     public UserDetails loadUserByUsername(String cardNumber) throws UsernameNotFoundException {
-         Card card = cardRepository.getById(cardNumber);
+        Card card = cardRepository.getById(cardNumber);
 
         if (card != null) {
 
@@ -138,18 +144,18 @@ public class CardService implements UserDetailsService {
 
             //Esto me permite guardar el OBJETO USUARIO LOGUEADO, para luego ser utilizado
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-            
+
             /* HttpSession - RETIENE Y MANTIENE INFORMACIÓN DE LA SESIÓN LOGUEADA CON CIERTO USUARIO*/
             HttpSession session = attr.getRequest().getSession(true);
 
             session.setAttribute("clienteSession", card); // llave + valor
 
-            User user = new User(card.getNumberCard(),String.valueOf(card.getPin()), permisos);
+            User user = new User(card.getNumberCard(), String.valueOf(card.getPin()), permisos);
 
             return user;
 
         } else {
-            
+
             return null;
         }
     }
