@@ -27,6 +27,9 @@ public class TransactionService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private MailService mailService;
+
     /**
      * MÉTODO PARA REALIZAR UNA NUEVA TRANSACCIÓN
      *
@@ -90,6 +93,34 @@ public class TransactionService {
             cardDestiny.setCredit(cardDestiny.getCredit() + amount);
 
             transactionRepository.save(transaction2);
+
+            /**
+             * ENVÍO DE MAIL CONFIRMANDO TRANSACCIÓN
+             */
+            String from = "bancosaintpatrick@gmail.com";
+            String to_1 = user2.getMail();
+            String subject = "CONFIRMACIÓN DE TRANSACCIÓN";
+            String body_1 = "\n\n Datos de la transferencia: "
+                    + "\nDe: " + user1.getName() + " " + user1.getSurname()
+                    + "\nCorreo: " + user1.getMail()
+                    + "\nPara: " + user2.getName() + " " + user2.getSurname()
+                    + "\nCorreo: " + user2.getMail()
+                    + "\nMonto: Transferecia por $" + amount;
+
+            MailService mail_1 = new MailService();
+            mail_1.sendMail(from, to_1, subject, body_1);
+
+            String to_2 = user1.getMail();
+
+            String body_2 = "\n\n Datos de la transferencia: "
+                    + "\nDe: " + user1.getName() + " " + user1.getSurname()
+                    + "\nCorreo: " + user1.getMail()
+                    + "\nPara: " + user2.getName() + " " + user2.getSurname()
+                    + "\nCorreo: " + user2.getMail()
+                    + "\nMonto: Transferecia por $" + amount;
+
+            MailService mail_2 = new MailService();
+            mail_2.sendMail(from, to_2, subject, body_2);
 
         } else {
             throw new ServiceError("EL SALDO DISPONIBLE NO ALCANZA PARA REALIZAR LA TRANSACCIÓN");

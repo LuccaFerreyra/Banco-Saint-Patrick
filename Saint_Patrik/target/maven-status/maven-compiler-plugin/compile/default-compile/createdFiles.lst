@@ -6,6 +6,7 @@ com\banco\Saint_Patrik\Configurations\SecuritySettings.class
 com\banco\Saint_Patrik\Services\CardService.class
 com\banco\Saint_Patrik\Enum\Role.class
 com\banco\Saint_Patrik\Entities\Card.class
+com\banco\Saint_Patrik\Services\MailService.class
 com\banco\Saint_Patrik\Entities\User.class
 com\banco\Saint_Patrik\Entities\Transaction.class
 com\banco\Saint_Patrik\Services\TransactionService.class
