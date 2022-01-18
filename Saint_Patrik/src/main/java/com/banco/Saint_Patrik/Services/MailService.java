@@ -11,6 +11,14 @@ public class MailService {
     @Autowired
     private JavaMailSender mailSender;
 
+    /**
+     * MÉTODO PARA PODER ENVIAR UN MAIL
+     *
+     * @param from
+     * @param to
+     * @param subject
+     * @param body
+     */
     public void sendMail(String from, String to, String subject, String body) {
 
         SimpleMailMessage mail = new SimpleMailMessage();

@@ -107,6 +107,7 @@ public class TransactionService {
                     + "\nCorreo: " + user2.getMail()
                     + "\nMonto: Transferecia por $" + amount;
 
+            /* ENVÍO DEL MAIL DE CONFIRMACIÓN A LA PERSONA DESTINO */
             MailService mail_1 = new MailService();
             mail_1.sendMail(from, to_1, subject, body_1);
 
@@ -119,6 +120,7 @@ public class TransactionService {
                     + "\nCorreo: " + user2.getMail()
                     + "\nMonto: Transferecia por $" + amount;
 
+            /* ENVÍO DEL MAIL DE CONFIRMACIÓN A LA PERSONA ORIGEN */
             MailService mail_2 = new MailService();
             mail_2.sendMail(from, to_2, subject, body_2);
 
