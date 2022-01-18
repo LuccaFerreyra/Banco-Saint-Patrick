@@ -41,7 +41,7 @@ public class TransactionController {
 
         List<Card> cardList = cardService.cardListEnabled();
         model.addAttribute("userAlta", cardList);
-        return "redirect:/";
+        return "redirect:/newTransaction";
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
@@ -57,7 +57,7 @@ public class TransactionController {
         try {
             transactionService.newTransaction(idUser, idUserDestiny, idCardOwn, idCardDestiy, amount);
             redirectAttributes.addFlashAttribute("success", "LA TRANSACCIÓN SE GENERÓ DE MANERA EXITOSA");
-            return "redirect:/";
+            return "redirect:/newTransaction";
         } catch (ServiceError e) {
             System.out.println(e.getMessage());
             redirectAttributes.addFlashAttribute("error", e.getMessage());
@@ -66,7 +66,7 @@ public class TransactionController {
             redirectAttributes.addFlashAttribute("idCardOwn", idCardOwn);
             redirectAttributes.addFlashAttribute("idCardDestiy", idCardDestiy);
             redirectAttributes.addFlashAttribute("amount", amount);
-            return "redirect:/";
+            return "redirect:/newTransaction";
         }
     }
 
@@ -78,7 +78,7 @@ public class TransactionController {
         try {
             List<Transaction> listTransaction = transactionService.searchTransactionByLast30Days(idUser);
             model.addAttribute("last30Days", listTransaction);
-            return "redirect:/";
+            return "redirect:/transactionByLast30Days";
         } catch (ServiceError e) {
             System.out.println(e.getMessage());
             redirectAttributes.addFlashAttribute("error", "HUBO UN ERROR AL MOSTRAR LAS TRANSACCIONES DE LOS ÚLTIMOS 30 DÍAS");
