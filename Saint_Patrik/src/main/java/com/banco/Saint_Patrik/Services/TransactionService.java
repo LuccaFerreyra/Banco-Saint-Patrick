@@ -165,7 +165,6 @@ public class TransactionService {
      * MÉTODO QUE MUETSRA LAS TRANSACCIONES DEL CLIENTE EN LOS ÚLTIMOS 30 DÍAS
      *
      * @param idUser
-     * @param id
      * @return
      * @throws ServiceError
      */
