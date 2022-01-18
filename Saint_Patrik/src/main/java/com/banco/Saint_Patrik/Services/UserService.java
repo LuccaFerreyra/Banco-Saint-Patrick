@@ -20,7 +20,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
-public class UserService implements UserDetailsService{
+public class UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -75,36 +75,6 @@ public class UserService implements UserDetailsService{
         return userRepository.searchById(idUser);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String CardNumber) throws UsernameNotFoundException {
-//       Card card=cardRepository.searchCardByNumberCard(CardNumber);
-//       
-//       
-//        if (card!=null) {
-//             List<GrantedAuthority> permisos = new ArrayList<>();
-//
-//            /*Creo una lista de permisos - "ROLE_" + cliente.getRol() - concateno la palabra ROL con el enumerador
-//            ADMIN O USUARIO*/
-//            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_" + userlog.getTypeRole());
-//            permisos.add(p1);
-//
-//            //Esto me permite guardar el OBJETO USUARIO LOGUEADO, para luego ser utilizado
-//            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-//            
-//            /* HttpSession - RETIENE Y MANTIENE INFORMACIÓN DE LA SESIÓN LOGUEADA CON CIERTO USUARIO*/
-//            HttpSession session = attr.getRequest().getSession(true);
-//
-//            session.setAttribute("clienteSession", userlog); // llave + valor
-//
-//            org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(userlog.getDocument(), userlog.getId(), permisos);//el user getid esta mal tiene que ir la clave
-//
-//            return user;
-//
-//        } else {
-//            
-            return null;
-        }
-//        }
     
     
 

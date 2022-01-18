@@ -62,7 +62,7 @@ public class CardController {
             return "redirect:/login";
         }
         List<Transaction> allTransactions = cardService.searchAllTransactions(cardId); 
-        model.addAttribute("credit", allTransactions);
+        model.addAttribute("transactions", allTransactions);
 
         
         return "html";
