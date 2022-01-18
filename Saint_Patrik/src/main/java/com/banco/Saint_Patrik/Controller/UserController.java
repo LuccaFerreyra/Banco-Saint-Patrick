@@ -5,6 +5,7 @@ import com.banco.Saint_Patrik.Errors.ServiceError;
 import com.banco.Saint_Patrik.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ public class UserController {
     private UserService service;
 
     //todas las cartas que posee un usuario
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/cards")
     public String cards(ModelMap model, @Param("idUser") String idUser) {
         model.addAttribute("cards", service.cardsFromUser(idUser));
@@ -27,6 +29,7 @@ public class UserController {
     }
 
     //LISTA DE USUARIOS HABILITADOS
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/userList")
     public String usersEnabled(ModelMap model) {
         model.addAttribute("users", service.userListEnabled());
@@ -34,6 +37,7 @@ public class UserController {
     }
 
     //LISTA DE USUARIOS DE BAJA
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/usersDisabled")
     public String usersDisabled(ModelMap model) throws ServiceError {
         try {
@@ -45,6 +49,7 @@ public class UserController {
     }
 
     //BUSCA UN USUARIO ESPECIFICO
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/usersSearch")
     public String user(ModelMap model, @RequestParam String idUser) throws ServiceError {
         try {

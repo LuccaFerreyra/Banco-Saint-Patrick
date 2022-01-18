@@ -9,6 +9,7 @@ import com.banco.Saint_Patrik.Services.TransactionService;
 import com.banco.Saint_Patrik.Services.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,7 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/newTransaction")
     public String newTransaction(ModelMap model, RedirectAttributes redirectAttributes) throws ServiceError {
 
@@ -42,6 +44,7 @@ public class TransactionController {
         return "redirect:/";
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping("/newTransaction")
     public String newTransaction(ModelMap model,
             @RequestParam(required = false) String idUser,
@@ -66,7 +69,7 @@ public class TransactionController {
             return "redirect:/";
         }
     }
-
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/transactionByLast30Days/{idUser}")
     public String transactionByLast30Days(ModelMap model,
             @PathVariable String idUser,

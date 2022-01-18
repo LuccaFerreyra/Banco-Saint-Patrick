@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,7 @@ public class CardController {
      * @return
      * @throws ServiceError 
      */
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/credit")
     public String cardCredit(HttpSession session, ModelMap model, @RequestParam(required = false) String cardId) throws ServiceError {
         
@@ -54,6 +56,7 @@ public class CardController {
      * @return
      * @throws ServiceError 
      */
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/transactions")
     public String cardTransactions(HttpSession session, ModelMap model, @RequestParam(required = false) String cardId) throws ServiceError {
         
@@ -74,6 +77,7 @@ public class CardController {
      * @param cardId
      * @return 
      */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/disable")
     public String disableCard(HttpSession session, @RequestParam String cardId){
         
@@ -92,6 +96,7 @@ public class CardController {
      * @param cardId
      * @return 
      */
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/enable")
     public String enableCard(HttpSession session, @RequestParam String cardId){
         
