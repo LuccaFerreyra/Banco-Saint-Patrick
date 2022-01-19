@@ -148,7 +148,7 @@ public class CardService implements UserDetailsService {
             /* HttpSession - RETIENE Y MANTIENE INFORMACIÓN DE LA SESIÓN LOGUEADA CON CIERTO USUARIO*/
             HttpSession session = attr.getRequest().getSession(true);
 
-            session.setAttribute("clienteSession", card); // llave + valor
+            session.setAttribute("cardSession", card); // llave + valor
 
             User user = new User(card.getNumberCard(), String.valueOf(card.getPin()), permisos);
 
