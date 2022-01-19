@@ -8,6 +8,7 @@ import com.banco.Saint_Patrik.Services.CardService;
 import com.banco.Saint_Patrik.Services.TransactionService;
 import com.banco.Saint_Patrik.Services.UserService;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -46,36 +47,51 @@ public class TransactionController {
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @PostMapping("/newTransaction")
-    public String newTransaction(ModelMap model,
-            @RequestParam(required = false) String idUser,
+    public String newTransaction(HttpSession session, ModelMap model,
+            //@RequestParam(required = false) String idUser,
             @RequestParam(required = false) String idUserDestiny,
             @RequestParam(required = false) String idCardOwn,
-            @RequestParam(required = false) String idCardDestiy,
+            @RequestParam(required = false) String idCardDestiny,
             @RequestParam(required = false) Double amount,
             RedirectAttributes redirectAttributes) {
 
         try {
-            transactionService.newTransaction(idUser, idUserDestiny, idCardOwn, idCardDestiy, amount);
+            User login = (User) session.getAttribute("cardSession");
+            if (login == null) {
+                return "redirect:/login";
+            }
+
+            String idUser = login.getId();
+
+            transactionService.newTransaction(idUser, idUserDestiny, idCardOwn, idCardDestiny, amount);
             redirectAttributes.addFlashAttribute("success", "LA TRANSACCIÓN SE GENERÓ DE MANERA EXITOSA");
             return "redirect:/newTransaction";
         } catch (ServiceError e) {
             System.out.println(e.getMessage());
             redirectAttributes.addFlashAttribute("error", e.getMessage());
-            redirectAttributes.addFlashAttribute("idUser", idUser);
+            //redirectAttributes.addFlashAttribute("idUser", idUser);
             redirectAttributes.addFlashAttribute("idUserDestiny", idUserDestiny);
             redirectAttributes.addFlashAttribute("idCardOwn", idCardOwn);
-            redirectAttributes.addFlashAttribute("idCardDestiy", idCardDestiy);
+            redirectAttributes.addFlashAttribute("idCardDestiy", idCardDestiny);
             redirectAttributes.addFlashAttribute("amount", amount);
             return "redirect:/newTransaction";
         }
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
-    @GetMapping("/transactionByLast30Days/{idUser}")
-    public String transactionByLast30Days(ModelMap model,
-            @PathVariable String idUser,
+//    @GetMapping("/transactionByLast30Days/{idUser}")
+    @GetMapping("/transactionByLast30Days")
+    public String transactionByLast30Days(HttpSession session, ModelMap model,
+            //@PathVariable String idUser,
             RedirectAttributes redirectAttributes) throws ServiceError {
         try {
+            User login = (User) session.getAttribute("cardSession");
+            if (login == null) {
+                return "redirect:/login";
+            }
+
+            String idUser = login.getId();
+
             List<Transaction> listTransaction = transactionService.searchTransactionByLast30Days(idUser);
             model.addAttribute("last30Days", listTransaction);
             return "redirect:/transactionByLast30Days";
