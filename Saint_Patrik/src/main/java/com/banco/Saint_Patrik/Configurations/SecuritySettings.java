@@ -24,14 +24,14 @@ public class SecuritySettings extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login") // Que formulario esta mi login 
                 .loginProcessingUrl("/logincheck")
-                .usernameParameter("username") // Como viajan los datos del logueo 
+                .usernameParameter("cardNumber") // Como viajan los datos del logueo 
                 .passwordParameter("password")// Como viajan los datos del logueo 
-                .defaultSuccessUrl("/inicio") // A que URL viaja 
+                .defaultSuccessUrl("/main") // A que URL viaja 
                 .permitAll()
                 .and()
                 .logout() // Aca configuro la salida 
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/login?logout")
                 .permitAll()
                 .and()
                 .csrf()
