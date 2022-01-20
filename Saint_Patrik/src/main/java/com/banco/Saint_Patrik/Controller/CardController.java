@@ -23,85 +23,87 @@ public class CardController {
 
     @Autowired
     private CardService cardService;
-    
+
     /**
      * MÉTODO QUE MUESTRA EL SALDO DE UNA DE LAS TARJETAS DEL CLIENTE
+     *
      * @param session
      * @param model
      * @param cardId
      * @return
-     * @throws ServiceError 
+     * @throws ServiceError
      */
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/credit")
     public String cardCredit(HttpSession session, ModelMap model, @RequestParam(required = false) String cardId) throws ServiceError {
-        
-        User login = (User)session.getAttribute("usersession"); //con esto si el id de login logueado viene nulo, no ejecuta el metodo
+
+        User login = (User) session.getAttribute("usersession"); //con esto si el id de login logueado viene nulo, no ejecuta el metodo
         if (login == null) {
             return "redirect:/login";
         }
-        Double creditCard = cardService.searchcardAmountByIdCard(cardId); 
+        Double creditCard = cardService.searchcardAmountByIdCard(cardId);
         model.addAttribute("credit", creditCard);
 
-        
         return "html";
     }
-    
+
     /**
      * MÉTODO QUE MUESTRA UNA LISTA DE TODAS LAS TRANSACCIONES DE UNA TARJETA
      * DEL CLIENTE
+     *
      * @param session
      * @param model
      * @param cardId
      * @return
-     * @throws ServiceError 
+     * @throws ServiceError
      */
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/transactions")
     public String cardTransactions(HttpSession session, ModelMap model, @RequestParam(required = false) String cardId) throws ServiceError {
-        
-        User login = (User)session.getAttribute("usersession"); //con esto si el id de login logueado viene nulo, no ejecuta el metodo
+
+        User login = (User) session.getAttribute("usersession"); //con esto si el id de login logueado viene nulo, no ejecuta el metodo
         if (login == null) {
             return "redirect:/login";
         }
-        List<Transaction> allTransactions = cardService.searchAllTransactions(cardId); 
+        List<Transaction> allTransactions = cardService.searchAllTransactions(cardId);
         model.addAttribute("transactions", allTransactions);
 
-        
         return "html";
     }
-    
+
     /**
      * MÉTODO PARA DAR DE BAJA UNA TARJETA DEL CLIENTE (PARA USUARIOS ROL ADMIN)
+     *
      * @param session
      * @param cardId
-     * @return 
+     * @return
      */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/disable")
-    public String disableCard(HttpSession session, @RequestParam String cardId){
-        
+    public String disableCard(HttpSession session, @RequestParam String cardId) {
+
         try {
-            User login = (User)session.getAttribute("usersession");
+            User login = (User) session.getAttribute("usersession");
             cardService.disable(login.getId(), cardId);
         } catch (ServiceError ex) {
             Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "redirect:/cards/all";
     }
-    
+
     /**
      * MÉTODO PARA DAR DE ALTA UNA TARJETA DEL CLIENTE (PARA USUARIOS ROL ADMIN)
+     *
      * @param session
      * @param cardId
-     * @return 
+     * @return
      */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/enable")
-    public String enableCard(HttpSession session, @RequestParam String cardId){
-        
+    public String enableCard(HttpSession session, @RequestParam String cardId) {
+
         try {
-            User login = (User)session.getAttribute("usersession");
+            User login = (User) session.getAttribute("usersession");
             cardService.enable(login.getId(), cardId);
         } catch (ServiceError ex) {
             Logger.getLogger(CardController.class.getName()).log(Level.SEVERE, null, ex);

@@ -5,26 +5,17 @@ import com.banco.Saint_Patrik.Entities.User;
 import com.banco.Saint_Patrik.Errors.ServiceError;
 import com.banco.Saint_Patrik.Repositories.CardRepository;
 import com.banco.Saint_Patrik.Repositories.UserRepository;
-import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.HttpSession;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-    
+
     @Autowired
     private CardRepository cardRepository;
 
@@ -52,6 +43,7 @@ public class UserService {
      * MÉTODO PARA MOSTRAR LOS USUARIOS POR ESTADO DE BAJAS
      *
      * @return
+     * @throws com.banco.Saint_Patrik.Errors.ServiceError
      */
     @Transactional(readOnly = true)
     public List<User> userListDisabled() throws ServiceError {
@@ -65,6 +57,7 @@ public class UserService {
      * METODO PARA TRAER UN USUARIO ESPECIFICO
      *
      * @param idUser
+     * @throws com.banco.Saint_Patrik.Errors.ServiceError
      * @Param idUser
      * @return User
      */
@@ -74,8 +67,4 @@ public class UserService {
         }
         return userRepository.searchById(idUser);
     }
-
-    
-    
-
 }

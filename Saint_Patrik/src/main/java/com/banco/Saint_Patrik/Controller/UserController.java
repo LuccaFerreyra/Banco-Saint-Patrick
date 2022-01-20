@@ -1,6 +1,5 @@
 package com.banco.Saint_Patrik.Controller;
 
-import com.banco.Saint_Patrik.Entities.User;
 import com.banco.Saint_Patrik.Errors.ServiceError;
 import com.banco.Saint_Patrik.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +18,15 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    //todas las cartas que posee un usuario
+//TODAS LAS TARJETAS QUE POSEE UN USUARIO
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/cards")
     public String cards(ModelMap model, @Param("idUser") String idUser) {
         model.addAttribute("cards", service.cardsFromUser(idUser));
-
         return "html";
     }
 
-    //LISTA DE USUARIOS HABILITADOS
+//LISTA DE USUARIOS HABILITADOS
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/userList")
     public String usersEnabled(ModelMap model) {
@@ -36,7 +34,7 @@ public class UserController {
         return "html";
     }
 
-    //LISTA DE USUARIOS DE BAJA
+//LISTA DE USUARIOS DE BAJA
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/usersDisabled")
     public String usersDisabled(ModelMap model) throws ServiceError {
@@ -48,7 +46,7 @@ public class UserController {
         return "html";
     }
 
-    //BUSCA UN USUARIO ESPECIFICO
+//BUSCA UN USUARIO ESPECIFICO
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/usersSearch")
     public String user(ModelMap model, @RequestParam String idUser) throws ServiceError {
@@ -59,5 +57,4 @@ public class UserController {
         }
         return "html";
     }
-
 }

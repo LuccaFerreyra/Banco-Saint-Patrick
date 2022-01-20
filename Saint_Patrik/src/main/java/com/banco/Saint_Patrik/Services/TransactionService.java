@@ -44,19 +44,19 @@ public class TransactionService {
     public void newTransaction(String idUser, String idUserDestiny, String idCardOwn, String idCardDestiy, Double amount) throws ServiceError {
 
         if (idUser == null || idUser.isEmpty()) {
-            throw new ServiceError("EL CLIENTE BUSCADO NO EXISTE");
+            throw new ServiceError("THE WANTED CUSTOMER DOES NOT EXIST");
         }
         if (idUserDestiny == null || idUserDestiny.isEmpty()) {
-            throw new ServiceError("EL CLIENTE DESTINO BUSCADO NO EXISTE");
+            throw new ServiceError("THE CUSTOMER DESTINATION SOUGHT DOES NOT EXIST");
         }
         if (idCardOwn == null || idCardOwn.isEmpty()) {
-            throw new ServiceError("EL NÚMERO DE TARJETA DE ORIGEN NO PUEDE ESTAR VACÍO");
+            throw new ServiceError("THE SOURCE CARD NUMBER CANNOT BE EMPTY");
         }
         if (idCardDestiy == null || idCardDestiy.isEmpty()) {
-            throw new ServiceError("EL NÚMERO DE TARJETA DE DESTINO NO PUEDE ESTAR VACÍO");
+            throw new ServiceError("THE DESTINATION CARD NUMBER CANNOT BE EMPTY");
         }
         if (amount == null || String.valueOf(amount).isEmpty()) {
-            throw new ServiceError("EL MONTO DE LA TRANSACCIÓN NO PUEDE ESTAR VACÍO");
+            throw new ServiceError("THE TRANSACTION AMOUNT CANNOT BE EMPTY");
         }
 
         Transaction transaction1 = new Transaction();
@@ -94,9 +94,8 @@ public class TransactionService {
 
             transactionRepository.save(transaction2);
 
-            /**
-             * ENVÍO DE MAIL CONFIRMANDO TRANSACCIÓN
-             */
+            // ENVÍO DE MAIL CONFIRMANDO TRANSACCIÓN
+            // SENDING MAIL CONFIRMING TRANSACTION
             String from = "bancosaintpatrick@gmail.com";
             String to_1 = user2.getMail();
             String subject = "CONFIRMACIÓN DE TRANSACCIÓN";
@@ -107,7 +106,8 @@ public class TransactionService {
                     + "\nCorreo: " + user2.getMail()
                     + "\nMonto: Transferecia por $" + amount;
 
-            /* ENVÍO DEL MAIL DE CONFIRMACIÓN A LA PERSONA DESTINO */
+            // ENVÍO DEL MAIL DE CONFIRMACIÓN A LA PERSONA DESTINO
+            // SENDING THE CONFIRMATION EMAIL TO THE DESTINATION PERSON
             MailService mail_1 = new MailService();
             mail_1.sendMail(from, to_1, subject, body_1);
 
@@ -120,12 +120,13 @@ public class TransactionService {
                     + "\nCorreo: " + user2.getMail()
                     + "\nMonto: Transferecia por $" + amount;
 
-            /* ENVÍO DEL MAIL DE CONFIRMACIÓN A LA PERSONA ORIGEN */
+            // ENVÍO DEL MAIL DE CONFIRMACIÓN A LA PERSONA ORIGEN
+            // SENDING THE CONFIRMATION EMAIL TO THE PERSON OF ORIGIN
             MailService mail_2 = new MailService();
             mail_2.sendMail(from, to_2, subject, body_2);
 
         } else {
-            throw new ServiceError("EL SALDO DISPONIBLE NO ALCANZA PARA REALIZAR LA TRANSACCIÓN");
+            throw new ServiceError("THE AVAILABLE BALANCE IS NOT ENOUGH TO MAKE THE TRANSACTION");
         }
     }
 
@@ -143,7 +144,7 @@ public class TransactionService {
             Transaction transaction = respuesta.get();
             transactionRepository.delete(transaction);
         } else {
-            throw new ServiceError("NO SE ENCONTRÓ LA TRANSACCIÓN BUSCADA");
+            throw new ServiceError("THE SEARCHED TRANSACTION COULD NOT BE FOUND");
         }
     }
 
@@ -159,7 +160,7 @@ public class TransactionService {
             List<Transaction> listTransaction = transactionRepository.searchAll();
             return listTransaction;
         } catch (Exception e) {
-            throw new ServiceError("HUBO UN ERROR AL MOSTRAR TODAS LAS TRANSACCIONES DEL CLIENTE");
+            throw new ServiceError("THERE WAS AN ERROR DISPLAYING ALL CUSTOMER TRANSACTIONS");
         }
     }
 
@@ -176,7 +177,7 @@ public class TransactionService {
             List<Transaction> listTransaction = transactionRepository.searchTransactionByLast30Days(idUser);
             return listTransaction;
         } catch (Exception e) {
-            throw new ServiceError("HUBO UN ERROR AL MOSTRAR LAS TRANSACCIONES DE LOS ÚLTIMOS 30 DÍAS");
+            throw new ServiceError("THERE WAS AN ERROR DISPLAYING TRANSACTIONS FOR THE LAST 30 DAYS");
         }
     }
 
@@ -194,7 +195,7 @@ public class TransactionService {
             Transaction transaction = respuesta.get();
             return transaction;
         } else {
-            throw new ServiceError("NO SE ENCONTRÓ LA TRANSACCIÓN BUSCADA");
+            throw new ServiceError("THE SEARCHED TRANSACTION COULD NOT BE FOUND");
         }
     }
 
@@ -210,7 +211,7 @@ public class TransactionService {
         try {
             return transactionRepository.searchByDate(dateTransaction);
         } catch (Exception e) {
-            throw new ServiceError("NO SE ENCONTRÓ LA TRANSACCIÓN BUSCADA");
+            throw new ServiceError("THE SEARCHED TRANSACTION COULD NOT BE FOUND");
         }
     }
 
@@ -226,7 +227,7 @@ public class TransactionService {
         try {
             return transactionRepository.searchByType(type);
         } catch (Exception e) {
-            throw new ServiceError("NO SE ENCONTRÓ LA TRANSACCIÓN BUSCADA");
+            throw new ServiceError("THE SEARCHED TRANSACTION COULD NOT BE FOUND");
         }
     }
 
@@ -243,7 +244,7 @@ public class TransactionService {
             List<Transaction> listTransaction = transactionRepository.searchTransactionByUser(id);
             return listTransaction;
         } catch (Exception e) {
-            throw new ServiceError("NO SE ENCONTRÓ LA TRANSACCIÓN BUSCADA");
+            throw new ServiceError("THE SEARCHED TRANSACTION COULD NOT BE FOUND");
         }
     }
 
@@ -260,7 +261,7 @@ public class TransactionService {
             List<Transaction> listTransaction = transactionRepository.searchTransactionByCardId(id);
             return listTransaction;
         } catch (Exception e) {
-            throw new ServiceError("NO SE ENCONTRÓ LA TRANSACCIÓN BUSCADA");
+            throw new ServiceError("THE SEARCHED TRANSACTION COULD NOT BE FOUND");
         }
     }
 
@@ -278,7 +279,7 @@ public class TransactionService {
             transaction.setEnabled(true);
             transactionRepository.save(transaction);
         } else {
-            throw new ServiceError("NO SE ENCONTRÓ LA TRANSACCIÓN BUSCADA");
+            throw new ServiceError("THE SEARCHED TRANSACTION COULD NOT BE FOUND");
         }
     }
 
@@ -296,7 +297,7 @@ public class TransactionService {
             transaction.setEnabled(false);
             transactionRepository.save(transaction);
         } else {
-            throw new ServiceError("NO SE ENCONTRÓ LA TRANSACCIÓN BUSCADA");
+            throw new ServiceError("THE SEARCHED TRANSACTION COULD NOT BE FOUND");
         }
     }
 
@@ -312,7 +313,7 @@ public class TransactionService {
             List<Transaction> listTransaction = transactionRepository.searchTransactionByEnabled();
             return listTransaction;
         } catch (Exception e) {
-            throw new ServiceError("HUBO UN ERROR AL MOSTRAR TODAS LAS TRANSACCIONES POR ALTAS");
+            throw new ServiceError("THERE WAS AN ERROR DISPLAYING ALL TRANSACTIONS BY ENABLED");
         }
     }
 
@@ -328,7 +329,7 @@ public class TransactionService {
             List<Transaction> listTransaction = transactionRepository.searchTransactionByDisabled();
             return listTransaction;
         } catch (Exception e) {
-            throw new ServiceError("HUBO UN ERROR AL MOSTRAR TODAS LAS TRANSACCIONES POR BAJAS");
+            throw new ServiceError("THERE WAS AN ERROR DISPLAYING ALL TRANSACTIONS BY DISABLED");
         }
     }
 }

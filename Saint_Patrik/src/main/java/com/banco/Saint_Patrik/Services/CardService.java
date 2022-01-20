@@ -42,7 +42,7 @@ public class CardService implements UserDetailsService {
             Card card = cardRepository.searchById(id);
             return card.getCredit();
         } catch (Exception e) {
-            throw new ServiceError("HUBO UN ERROR AL MOSTRAR EL SALDO DE LA TARJETA");
+            throw new ServiceError("THERE WAS AN ERROR DISPLAYING THE CARD BALANCE");
         }
     }
 
@@ -60,7 +60,7 @@ public class CardService implements UserDetailsService {
             List<Transaction> listTransactions = transactionRepository.searchTransactionByCardId(id);
             return listTransactions;
         } catch (Exception e) {
-            throw new ServiceError("HUBO UN ERROR AL MOSTRAR TODAS LAS TRANSACCIONES DE ESTA TARJETA");
+            throw new ServiceError("THERE WAS AN ERROR DISPLAYING ALL TRANSACTIONS ON THIS CARD");
         }
     }
 
@@ -80,7 +80,7 @@ public class CardService implements UserDetailsService {
             cardRepository.save(card);
 
         } catch (Exception e) {
-            throw new ServiceError("HUBO UN ERROR AL DAR DE BAJA LA TARJETA");
+            throw new ServiceError("THERE WAS AN ERROR DISABLING THE CARD");
         }
     }
 
@@ -99,7 +99,7 @@ public class CardService implements UserDetailsService {
             card.setEnabled(Boolean.TRUE);
             cardRepository.save(card);
         } catch (Exception e) {
-            throw new ServiceError("HUBO UN ERROR AL DAR DE ALTA LA TARJETA");
+            throw new ServiceError("THERE WAS AN ERROR ENABLING THE CARD");
         }
     }
 

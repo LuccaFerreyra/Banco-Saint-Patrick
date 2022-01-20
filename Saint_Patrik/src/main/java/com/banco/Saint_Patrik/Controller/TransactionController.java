@@ -14,7 +14,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -64,7 +63,7 @@ public class TransactionController {
             String idUser = login.getId();
 
             transactionService.newTransaction(idUser, idUserDestiny, idCardOwn, idCardDestiny, amount);
-            redirectAttributes.addFlashAttribute("success", "LA TRANSACCIÓN SE GENERÓ DE MANERA EXITOSA");
+            redirectAttributes.addFlashAttribute("success", "THE TRANSACTION WAS SUCCESSFULLY GENERATED");
             return "redirect:/newTransaction";
         } catch (ServiceError e) {
             System.out.println(e.getMessage());
@@ -79,7 +78,7 @@ public class TransactionController {
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
-//    @GetMapping("/transactionByLast30Days/{idUser}")
+    //@GetMapping("/transactionByLast30Days/{idUser}")
     @GetMapping("/transactionByLast30Days")
     public String transactionByLast30Days(HttpSession session, ModelMap model,
             //@PathVariable String idUser,
@@ -97,7 +96,7 @@ public class TransactionController {
             return "redirect:/transactionByLast30Days";
         } catch (ServiceError e) {
             System.out.println(e.getMessage());
-            redirectAttributes.addFlashAttribute("error", "HUBO UN ERROR AL MOSTRAR LAS TRANSACCIONES DE LOS ÚLTIMOS 30 DÍAS");
+            redirectAttributes.addFlashAttribute("error", "THERE WAS AN ERROR DISPLAYING TRANSACTIONS FOR THE LAST 30 DAYS");
             return "redirect:/";
         }
     }
