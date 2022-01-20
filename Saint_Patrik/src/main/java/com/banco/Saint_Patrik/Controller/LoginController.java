@@ -23,7 +23,9 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public String login(@RequestParam(required = false) String error, @RequestParam(required = false) String logout, ModelMap model) {
+    public String login(@RequestParam(required = false) String error, 
+            @RequestParam(required = false) String logout, ModelMap model) {
+        
         if (error != null) {
             model.put("error", "INCORRECT USERNAME OR PASSWORD"); //hay que mostrarlo en la vista login.html
         }
