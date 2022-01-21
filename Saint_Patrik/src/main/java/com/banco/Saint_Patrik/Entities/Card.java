@@ -28,7 +28,7 @@ public class Card {
     private User user;
 
     @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.MERGE}, orphanRemoval = true)
-    @JoinColumn(name = "transaction_id")
+//    @JoinColumn(name = "transaction_id")
     private List<Transaction> transaction;
 
     public Card() {
