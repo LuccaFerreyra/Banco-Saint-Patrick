@@ -2,12 +2,14 @@ package com.banco.Saint_Patrik.Entities;
 
 import com.banco.Saint_Patrik.Enum.Role;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -30,13 +32,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role typeRole;
 
-    @OneToMany//(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Card> card;
-//    private Card card;
 
-    @OneToMany//(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Transaction> transaction;
-//    private Transaction transaction;
 
     public User() {
         this.enabled = true;

@@ -1,9 +1,13 @@
 package com.banco.Saint_Patrik.Entities;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -20,20 +24,25 @@ public class Card {
     private Double credit;
     private Boolean enabled;
 
-    @OneToOne//(cascade = CascadeType.ALL)
+    @OneToOne
     private User user;
+
+    @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.MERGE}, orphanRemoval = true)
+    @JoinColumn(name = "transaction_id")
+    private List<Transaction> transaction;
 
     public Card() {
         this.enabled = true;
     }
 
-    public Card(String id, String numberCard, Integer pin, Double credit, Boolean enabled, User user) {
+    public Card(String id, String numberCard, Integer pin, Double credit, Boolean enabled, User user, List<Transaction> transaction) {
         this.id = id;
         this.numberCard = numberCard;
         this.pin = pin;
         this.credit = credit;
         this.enabled = enabled;
         this.user = user;
+        this.transaction = transaction;
     }
 
     /**
@@ -120,9 +129,23 @@ public class Card {
         this.user = user;
     }
 
+    /**
+     * @return the transaction
+     */
+    public List<Transaction> getTransaction() {
+        return transaction;
+    }
+
+    /**
+     * @param transaction the transaction to set
+     */
+    public void setTransaction(List<Transaction> transaction) {
+        this.transaction = transaction;
+    }
+
     @Override
     public String toString() {
-        return "Card{" + "id=" + id + ", numberCard=" + numberCard + ", pin=" + pin + ", credit=" + credit + ", enabled=" + enabled + ", user=" + user + '}';
+        return "Card{" + "id=" + id + ", numberCard=" + numberCard + ", pin=" + pin + ", credit=" + credit + ", enabled=" + enabled + ", user=" + user + ", transaction=" + transaction + '}';
     }
 
 }

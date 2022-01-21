@@ -8,6 +8,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,10 +33,11 @@ public class Transaction {
     private Double amount;
     private Boolean enabled;
 
-    @ManyToOne//(cascade = CascadeType.ALL)
+    @ManyToOne
     private User user;
 
-    @ManyToOne//(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "card_id")
     private Card card;
 
     public Transaction() {
