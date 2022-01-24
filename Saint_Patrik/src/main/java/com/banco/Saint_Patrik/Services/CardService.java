@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -143,7 +144,7 @@ public class CardService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String cardNumber) throws UsernameNotFoundException {
-        Card card = cardRepository.getById(cardNumber);
+         Card card = cardRepository.searchCardByNumberCard(cardNumber);
 
         if (card != null) {
 
@@ -161,8 +162,11 @@ public class CardService implements UserDetailsService {
             HttpSession session = attr.getRequest().getSession(true);
 
             session.setAttribute("cardSession", card); // llave + valor
-
-            User user = new User(card.getNumberCard(), String.valueOf(card.getPin()), permisos);
+            
+            String bcrypt=new BCryptPasswordEncoder().encode(card.getPin()); 
+            card.setPin(bcrypt);
+            
+            User user = new User(card.getNumberCard(), bcrypt, permisos);
 
             return user;
 

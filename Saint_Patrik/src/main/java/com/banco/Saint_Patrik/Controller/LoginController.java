@@ -8,18 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("")
 public class LoginController {
 
-    @GetMapping("/")
-    public String index() {
-        return "index.html";
-    }
+   
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/main")
-    public String inicio() {
-        return "main.html";
+    public String main() {
+        return "index.html";
     }
 
     @GetMapping("/login")

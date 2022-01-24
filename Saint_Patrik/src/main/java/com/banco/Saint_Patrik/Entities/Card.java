@@ -20,7 +20,7 @@ public class Card {
     @Column(unique = true)
     private String id;
     private String numberCard;
-    private Integer pin;
+    private String pin;
     private Double credit;
     private Boolean enabled;
 
@@ -35,7 +35,7 @@ public class Card {
         this.enabled = true;
     }
 
-    public Card(String id, String numberCard, Integer pin, Double credit, Boolean enabled, User user, List<Transaction> transaction) {
+    public Card(String id, String numberCard, String pin, Double credit, Boolean enabled, User user, List<Transaction> transaction) {
         this.id = id;
         this.numberCard = numberCard;
         this.pin = pin;
@@ -76,14 +76,14 @@ public class Card {
     /**
      * @return the pin
      */
-    public Integer getPin() {
+    public String getPin() {
         return pin;
     }
 
     /**
      * @param pin the pin to set
      */
-    public void setPin(Integer pin) {
+    public void setPin(String pin) {
         this.pin = pin;
     }
 
