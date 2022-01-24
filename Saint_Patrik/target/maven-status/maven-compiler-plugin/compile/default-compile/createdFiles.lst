@@ -1,3 +1,4 @@
+com\banco\Saint_Patrik\Controller\ErrorControlador.class
 com\banco\Saint_Patrik\Controller\TransactionController.class
 com\banco\Saint_Patrik\Enum\Type_Transaction.class
 com\banco\Saint_Patrik\Controller\CardController.class
