@@ -66,27 +66,53 @@ public interface UserRepository extends JpaRepository<User, String> {
     public User searchByDocument(@Param("document") String document);
 
     /**
-     * BUSCAR LAS TARJETAS DEL USUARIO
-     * FIND THE USER'S CARDS
+     * BUSCAR LAS TARJETAS DEL USUARIO FIND THE USER'S CARDS
+     *
      * @param idUser
-     * @return 
+     * @return
      */
     @Query("SELECT u.card FROM User u WHERE u.id = :idUser")
     public List<Card> searchCardsFromUser(@Param("idUser") String idUser);
 
-    //BUSCAR USUARIOS HABILITADOS
+    /**
+     * BUSCAR USUARIOS HABILITADOS
+     *
+     * FIND ENABLED USERS
+     *
+     * @return
+     */
     @Query("SELECT u from User u WHERE u.enabled = true ORDER BY u.surname ASC")
     public List<User> searchUserByEnabled();
 
-    //BUSCAR USUARIOS DESHABILITADOS
+    /**
+     * BUSCAR USUARIOS DESHABILITADOS
+     *
+     * FIND DISABLED USERS
+     *
+     * @return
+     */
     @Query("SELECT u from User u WHERE u.enabled = false ORDER BY u.surname ASC")
     public List<User> searchUserByDisabled();
 
-    //BUSCAR UN USUARIO POR ID DE TARJETA
+    /**
+     * BUSCAR UN USUARIO POR ID DE TARJETA
+     *
+     * SEARCH FOR A USER BY CARD ID
+     *
+     * @param id
+     * @return
+     */
     @Query("SELECT u.card FROM User u WHERE u.id = :id")
     public User searchUserByIdCard(@Param("id") String id);
 
-    //BUSCAR UNA TARJETA POR ID DE USUARIO
+    /**
+     * BUSCAR UNA TARJETA POR ID DE USUARIO
+     *
+     * SEARCH FOR A CARD BY USER ID
+     *
+     * @param id
+     * @return
+     */
     @Query("SELECT c.user from Card c WHERE c.id = :id ")
     public User searchCardByUser(@Param("id") String id);
 

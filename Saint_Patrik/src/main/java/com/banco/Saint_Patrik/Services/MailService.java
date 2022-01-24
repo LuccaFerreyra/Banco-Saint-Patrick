@@ -15,6 +15,8 @@ public class MailService {
     /**
      * MÉTODO PARA PODER ENVIAR UN MAIL
      *
+     * METHOD TO BE ABLE TO SEND AN EMAIL
+     *
      * @param from
      * @param to
      * @param subject

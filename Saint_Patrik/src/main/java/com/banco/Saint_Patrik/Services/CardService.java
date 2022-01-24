@@ -32,6 +32,8 @@ public class CardService implements UserDetailsService {
     /**
      * MÉTODO QUE MUESTRA EL SALDO DE UNA DE LAS TARJETAS DEL CLIENTE
      *
+     * METHOD SHOWING THE BALANCE OF ONE OF THE CUSTOMER'S CARDS
+     *
      * @param id
      * @return
      * @throws ServiceError
@@ -50,6 +52,8 @@ public class CardService implements UserDetailsService {
      * MÉTODO QUE MUESTRA UNA LISTA DE TODAS LAS TRANSACCIONES DE UNA TARJETA
      * DEL CLIENTE
      *
+     * METHOD THAT DISPLAYS A LIST OF ALL TRANSACTIONS ON A CUSTOMER CARD
+     *
      * @param id
      * @return
      * @throws ServiceError
@@ -66,6 +70,8 @@ public class CardService implements UserDetailsService {
 
     /**
      * MÉTODO PARA DAR DE BAJA UNA TARJETA DEL CLIENTE (PARA USUARIOS ROL ADMIN)
+     *
+     * METHOD TO DISABLE A CLIENT CARD (FOR ADMIN ROLE USERS)
      *
      * @param idUser
      * @param cardId
@@ -87,6 +93,8 @@ public class CardService implements UserDetailsService {
     /**
      * MÉTODO PARA DAR DE ALTA UNA TARJETA DEL CLIENTE (PARA USUARIOS ROL ADMIN)
      *
+     * METHOD TO ENABLE A CLIENT CARD (FOR ADMIN ROLE USERS)
+     *
      * @param idUser
      * @param cardId
      * @throws ServiceError
@@ -106,6 +114,8 @@ public class CardService implements UserDetailsService {
     /**
      * MÉTODO PARA MOSTRAR LAS TARJETAS POR ESTADO DE ALTAS
      *
+     * METHOD FOR DISPLAYING ENABLED CARDS
+     *
      * @return
      */
     @Transactional(readOnly = true)
@@ -115,6 +125,8 @@ public class CardService implements UserDetailsService {
 
     /**
      * MÉTODO PARA MOSTRAR LAS TARJETAS POR ESTADO DE BAJAS
+     *
+     * METHOD FOR DISPLAYING DISABLED CARDS
      *
      * @return
      */
