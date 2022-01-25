@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -31,6 +32,8 @@ public class CardService implements UserDetailsService {
 
     /**
      * MÉTODO QUE MUESTRA EL SALDO DE UNA DE LAS TARJETAS DEL CLIENTE
+     *
+     * METHOD SHOWING THE BALANCE OF ONE OF THE CUSTOMER'S CARDS
      *
      * @param id
      * @return
@@ -50,6 +53,8 @@ public class CardService implements UserDetailsService {
      * MÉTODO QUE MUESTRA UNA LISTA DE TODAS LAS TRANSACCIONES DE UNA TARJETA
      * DEL CLIENTE
      *
+     * METHOD THAT DISPLAYS A LIST OF ALL TRANSACTIONS ON A CUSTOMER CARD
+     *
      * @param id
      * @return
      * @throws ServiceError
@@ -66,6 +71,8 @@ public class CardService implements UserDetailsService {
 
     /**
      * MÉTODO PARA DAR DE BAJA UNA TARJETA DEL CLIENTE (PARA USUARIOS ROL ADMIN)
+     *
+     * METHOD TO DISABLE A CLIENT CARD (FOR ADMIN ROLE USERS)
      *
      * @param idUser
      * @param cardId
@@ -87,6 +94,8 @@ public class CardService implements UserDetailsService {
     /**
      * MÉTODO PARA DAR DE ALTA UNA TARJETA DEL CLIENTE (PARA USUARIOS ROL ADMIN)
      *
+     * METHOD TO ENABLE A CLIENT CARD (FOR ADMIN ROLE USERS)
+     *
      * @param idUser
      * @param cardId
      * @throws ServiceError
@@ -106,6 +115,8 @@ public class CardService implements UserDetailsService {
     /**
      * MÉTODO PARA MOSTRAR LAS TARJETAS POR ESTADO DE ALTAS
      *
+     * METHOD FOR DISPLAYING ENABLED CARDS
+     *
      * @return
      */
     @Transactional(readOnly = true)
@@ -115,6 +126,8 @@ public class CardService implements UserDetailsService {
 
     /**
      * MÉTODO PARA MOSTRAR LAS TARJETAS POR ESTADO DE BAJAS
+     *
+     * METHOD FOR DISPLAYING DISABLED CARDS
      *
      * @return
      */
@@ -131,26 +144,29 @@ public class CardService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String cardNumber) throws UsernameNotFoundException {
-        Card card = cardRepository.getById(cardNumber);
+
+        Card card = cardRepository.searchCardByNumberCard(cardNumber);
 
         if (card != null) {
 
-            List<GrantedAuthority> permisos = new ArrayList<>();
+            List<GrantedAuthority> permissions = new ArrayList<>();
 
-            /*Creo una lista de permisos - "ROLE_" + cliente.getRol() - concateno la palabra ROL con el enumerador
-            ADMIN O USUARIO*/
             GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_" + card.getUser().getTypeRole());
-            permisos.add(p1);
+            permissions.add(p1);
 
-            //Esto me permite guardar el OBJETO USUARIO LOGUEADO, para luego ser utilizado
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 
-            /* HttpSession - RETIENE Y MANTIENE INFORMACIÓN DE LA SESIÓN LOGUEADA CON CIERTO USUARIO*/
             HttpSession session = attr.getRequest().getSession(true);
 
-            session.setAttribute("cardSession", card); // llave + valor
+            String bcrypt = new BCryptPasswordEncoder().encode(card.getPin());
+            card.setPin(bcrypt);
 
-            User user = new User(card.getNumberCard(), String.valueOf(card.getPin()), permisos);
+            session.setAttribute("cardSession", card);
+
+            String encript = new BCryptPasswordEncoder().encode(card.getPin());
+            card.setPin(encript);
+
+            User user = new User(card.getNumberCard(), encript, permissions);
 
             return user;
 

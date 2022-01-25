@@ -26,6 +26,8 @@ public class CardController {
 
     /**
      * MÉTODO QUE MUESTRA EL SALDO DE UNA DE LAS TARJETAS DEL CLIENTE
+     * 
+     * METHOD SHOWING THE BALANCE OF ONE OF THE CUSTOMER'S CARDS
      *
      * @param session
      * @param model
@@ -50,6 +52,8 @@ public class CardController {
     /**
      * MÉTODO QUE MUESTRA UNA LISTA DE TODAS LAS TRANSACCIONES DE UNA TARJETA
      * DEL CLIENTE
+     * 
+     * METHOD THAT DISPLAYS A LIST OF ALL TRANSACTIONS ON A CUSTOMER CARD
      *
      * @param session
      * @param model
@@ -73,6 +77,8 @@ public class CardController {
 
     /**
      * MÉTODO PARA DAR DE BAJA UNA TARJETA DEL CLIENTE (PARA USUARIOS ROL ADMIN)
+     * 
+     * METHOD TO DISABLE A CUSTOMER CARD (FOR ADMIN ROLE USERS)
      *
      * @param session
      * @param cardId
@@ -93,6 +99,8 @@ public class CardController {
 
     /**
      * MÉTODO PARA DAR DE ALTA UNA TARJETA DEL CLIENTE (PARA USUARIOS ROL ADMIN)
+     * 
+     * METHOD TO ENABLE A CUSTOMER CARD (FOR ADMIN ROLE USERS)
      *
      * @param session
      * @param cardId

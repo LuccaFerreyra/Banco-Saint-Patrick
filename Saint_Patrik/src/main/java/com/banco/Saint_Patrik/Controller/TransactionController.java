@@ -32,6 +32,16 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
+    /**
+     * MÉTODO PARA REALIZAR UNA TRANSACCIÓN
+     *
+     * METHOD FOR MAKING A TRANSACTION
+     *
+     * @param model
+     * @param redirectAttributes
+     * @return
+     * @throws ServiceError
+     */
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/newTransaction")
     public String newTransaction(ModelMap model, RedirectAttributes redirectAttributes) throws ServiceError {
@@ -77,6 +87,17 @@ public class TransactionController {
         }
     }
 
+    /**
+     * MÉTODO QUE MUESTRA LAS TRANSACCIONES DE LOS ÚLTIMOS 30 DÍAS
+     *
+     * METHOD SHOWING TRANSACTIONS FROM THE LAST 30 DAYS
+     *
+     * @param session
+     * @param model
+     * @param redirectAttributes
+     * @return
+     * @throws ServiceError
+     */
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     //@GetMapping("/transactionByLast30Days/{idUser}")
     @GetMapping("/transactionByLast30Days")

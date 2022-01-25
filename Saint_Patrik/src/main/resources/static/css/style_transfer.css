@@ -1,0 +1,524 @@
+/* Creamos nuestras variables, mediante :root accedemos a la ruta de css */
+:root{
+    --yellow: #f0c44e;
+    --blue-green-dark: #095757;
+    --nav:#e9f5f5;
+    --blue-green:#72ada0;
+    --light-blue:#78b4b6;
+}
+
+/* Para que en todos los navegadores se vea igual */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #fff;
+    font-family: 'Roboto';
+
+}
+.container{
+    width: 95%;
+    margin: auto;
+   
+}
+
+
+
+header{
+    padding: 30px 0;
+    background: var(--nav);
+    
+}
+
+/* Para acceder al header del contenedor */
+header .container{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;   
+}
+header .container img{
+    margin-left: 3.33em;
+	width: 50px;
+	height: 50px;
+    margin-top: 5px;
+    display: flex; 
+	justify-content: flex-start;
+    flex-direction: column;
+
+}
+header .container h2{
+    margin-right: 500px;
+    font-weight:bold;
+}
+
+header .logo{
+    /* Para quitarle las negritas usamos un font-weight normal */
+    font-weight: normal; 
+    color: #000;
+    font-size: 40px;
+
+}
+
+header .navar a{    
+    letter-spacing: 5px;         
+    margin-bottom: 20px;
+}
+
+header .navar a{    
+    
+    font-size: 20px;
+    margin-right: 75px;
+    margin-left: -50px;    
+    color: #aaa;
+    
+    /* text decoration para quitarle los subrayados */
+    text-decoration: none;   
+    
+}
+
+/* El primer enlace activo, mientras que si paso el cursor sobre los otros habrá un efecto hover*/
+header nav a:hover,
+header nav a.active{
+    
+    color:#000;    
+    background-color: #f0c44e;
+}
+
+
+
+
+/* Operations */
+
+
+.section{
+    width: 90%;
+    margin: auto;
+}
+.border-container{
+    display: flex;
+    justify-content: center;  
+    align-items: left; 
+    text-align: center;
+    flex-direction: column;
+}
+section .operation{
+    display: flex;
+    justify-content: left;
+    align-items: left;   
+    text-align:left;
+    flex-direction: column;
+    padding: 30px 0;
+    margin: 0px;
+    margin-left: 50px;  
+    background: #fff;
+    margin-left: 90px;
+    margin-right: 100px;
+    border-top: 1px solid var(--blue-green-dark);
+    border-right: 1px solid var(--blue-green-dark);
+    border-bottom: 1px solid var(--blue-green-dark);
+    border-left: 1px solid var(--blue-green-dark);
+    border-radius: 23px;
+    
+}
+
+.operation h3{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 30px;
+}
+.operation h2{
+    text-align: left;
+    margin-left: 50px;  
+  /*  display: flex;
+    justify-content: center; */ 
+   
+}
+
+.transfer-Operations {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    text-align: center;
+    flex-direction: column;
+    font-size: 18px;    
+    font-weight: 400;
+    color: #000;
+}
+.form-control{
+    margin-left: 50px;  
+    font-size: 32px;  
+}
+.usd{
+    font-size: 32px;  
+}
+.comment{
+    text-align: left;
+    margin: left 0;
+    font-size: 18px;
+}
+
+.select-card{
+    align-items: left; 
+    text-align: left;
+    margin-left: 50px;  
+    font-size: 18px;    
+    font-weight: 400;
+    color: #000;
+}
+
+
+/* Btn */
+
+section .btn{
+    display: flex;
+	align-items: center; 
+    justify-content: center; 
+	margin-top: 2em;
+	margin-left: 35.5em;
+	width: 27%;
+	height: 50px;
+	background: #000;
+	color: #000;
+	
+	font-size: 20px;
+	font-weight: 18.75em;
+	border: none;
+	cursor: pointer;
+	text-transform: uppercase;
+    transition: .5s ease all;
+	border-radius: 5px;
+	position: relative; 
+	overflow: hidden; 
+	background-color: #f0c44e;
+    
+}
+
+section .btn:hover{
+    color: #000;
+    filter: drop-shadow(0 0 5px var(--yellow)) drop-shadow(0 0 15px var(--yellow));
+}
+section .btn ico-icon{
+    --ionicon-stroke-width: 50px;
+
+}
+
+
+/* Footer */
+
+footer{
+    
+    padding: 30px 0;
+    background: var(--yellow);
+    
+   
+	
+}
+footer .footer_logo{
+    display: flex;
+    justify-content: flex-start; 
+     
+}
+footer img{
+    
+    margin-left: 5.5em;
+	width: 50px;
+	height: 50px;
+    margin-top: 5px;           
+    
+}
+
+footer .footer_logo h3{
+    margin-top: 20px;
+    text-align: initial;   
+    font-weight: 400;
+    margin-left: 560px;
+    font-size: 18px;
+
+}
+
+.super-container{
+    display: flex;
+	 /*align-items: center;  */
+    flex-direction: column;
+   justify-content: center;
+    min-height: calc(100vh - 275px);
+
+}
+
+
+
+
+
+/* Media Queries */
+@media screen and (max-width: 1420px){
+    header .logo{
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    header .container {
+        flex-direction: column;
+        text-align: center;
+       
+    }
+    header .container h2{
+        margin-top:15px;
+        margin-right: 5px;
+        font-weight:700;
+    }
+    header .navar{
+        margin-top: 20px;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        margin-left: 150px;
+    }
+
+    section .btn{
+        margin-left: 50%;
+    }
+
+    section .btn{
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        margin-top: 2em;
+        margin-left: 38%;
+        width: 27%;
+        height: 50px;
+        background: #000;
+        color: #000;
+        
+        font-size: 20px;
+        font-weight: 18.75em;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: .5s ease all;
+        border-radius: 5px;
+        position: relative; 
+        overflow: hidden; 
+        background-color: #f0c44e;
+        
+    }
+    
+    footer .footer_logo h3{
+        margin-top: 20px;
+        text-align: initial;   
+        font-weight: 400;
+        margin-left: 50%;
+        font-size: 18px;
+    
+    }
+   
+    
+    
+   
+}
+
+@media screen and (max-width: 900px){
+    section .btn{
+        margin-left: 50%;
+    }
+    footer .footer_logo h3{
+        margin-top: 20px;
+        text-align: initial;   
+        font-weight: 400;
+        margin-left: 160px;
+        font-size: 18px;
+    
+
+    }
+    section .btn{
+        margin-left: 50%;
+    }
+
+    section .btn{
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        margin-top: 2em;
+        margin-left: 48%;
+        width: 27%;
+        height: 50px;
+        background: #000;
+        color: #000;
+        
+        font-size: 20px;
+        font-weight: 18.75em;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: .5s ease all;
+        border-radius: 5px;
+        position: relative; 
+        overflow: hidden; 
+        background-color: #f0c44e;
+        
+    }
+}
+
+@media screen and (max-width: 880px){
+     section .btn{
+        margin-left: 50%;
+    }
+
+    section .btn{
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        margin-top: 2em;
+        margin-left: 16.5em;
+        width: 27%;
+        height: 50px;
+        background: #000;
+        color: #000;
+        
+        font-size: 20px;
+        font-weight: 18.75em;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: .5s ease all;
+        border-radius: 5px;
+        position: relative; 
+        overflow: hidden; 
+        background-color: #f0c44e;
+        
+    }
+    
+}
+
+
+@media screen and (max-width: 630px){
+    
+    header .navar{
+        margin-top: 20px;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        margin-right: -80px;
+        margin-left: 50px;
+    }
+    section .btn{
+        margin-left: 50%;
+    }
+    section .btn{
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        margin-top: 2em;
+        margin-left: 8.5em;
+        width: 27%;
+        height: 50px;
+        background: #000;
+        color: #000;
+        
+        font-size: 20px;
+        font-weight: 18.75em;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: .5s ease all;
+        border-radius: 5px;
+        position: relative; 
+        overflow: hidden; 
+        background-color: #f0c44e;
+        
+    }
+   }
+@media screen and (max-width: 751px){
+ section .btn{
+    margin-left: 50%;
+     
+    }
+ main .balance{
+     flex-direction: column;
+ }
+ section .operation h3{
+     margin-right: 60px;
+     flex-direction: column;
+ }
+ 
+
+section .btn{
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 2em;
+    margin-left: 13.5em;
+    width: 27%;
+    height: 50px;
+    background: #000;
+    color: #000;
+    
+    font-size: 20px;
+    font-weight: 18.75em;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: .5s ease all;
+    border-radius: 5px;
+    position: relative; 
+    overflow: hidden; 
+    background-color: #f0c44e;
+    
+}
+
+}
+@media screen and (max-width: 536px){
+    
+    section{
+        flex-direction: column;
+    }
+    header .navar a{
+        flex-direction: column;
+    }
+    
+    header .navar{
+        margin-top: 20px;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        align-content: center;
+        margin-right: -80px;
+        margin-left: 50px;
+    }
+
+    section .btn{
+        margin-left: 50%;
+    }
+    section .btn{
+        margin-left: 50%;
+    }
+    section .btn{
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        margin-top: 2em;
+        margin-left: 200px;
+        width: 27%;
+        height: 50px;
+        background: #000;
+        color: #000;
+        
+        font-size: 20px;
+        font-weight: 18.75em;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: .5s ease all;
+        border-radius: 5px;
+        position: relative; 
+        overflow: hidden; 
+        background-color: #f0c44e;
+        
+    }
+   }

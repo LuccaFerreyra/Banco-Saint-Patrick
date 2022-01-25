@@ -33,6 +33,8 @@ public class TransactionService {
     /**
      * MÉTODO PARA REALIZAR UNA NUEVA TRANSACCIÓN
      *
+     * METHOD TO MAKE A NEW TRANSACTION
+     *
      * @param idUser
      * @param idUserDestiny
      * @param idCardOwn
@@ -133,6 +135,8 @@ public class TransactionService {
     /**
      * MÉTODO PARA ELIMINAR UNA TRASACCIÓN
      *
+     * METHOD FOR DELETING A TRASACTION
+     *
      * @param id
      * @throws ServiceError
      */
@@ -151,6 +155,8 @@ public class TransactionService {
     /**
      * MÉTODO QUE MUESTRA UNA LISTA DE TODAS LAS TRANSACCIONES DEL BANCO
      *
+     * METHOD THAT DISPLAYS A LIST OF ALL BANK TRANSACTIONS
+     *
      * @return
      * @throws ServiceError
      */
@@ -165,7 +171,9 @@ public class TransactionService {
     }
 
     /**
-     * MÉTODO QUE MUETSRA LAS TRANSACCIONES DEL CLIENTE EN LOS ÚLTIMOS 30 DÍAS
+     * MÉTODO QUE MUETRA LAS TRANSACCIONES DEL CLIENTE EN LOS ÚLTIMOS 30 DÍAS
+     *
+     * METHOD SHOWING CUSTOMER TRANSACTIONS IN THE LAST 30 DAYS
      *
      * @param idUser
      * @return
@@ -183,6 +191,8 @@ public class TransactionService {
 
     /**
      * MÉTODO QUE MUETSRA UNA TRANSACCIÓN BUSCADA POR ID
+     *
+     * METHOD THAT MUETSRA A TRANSACTION SEARCHED BY ID
      *
      * @param id
      * @return
@@ -202,6 +212,8 @@ public class TransactionService {
     /**
      * MÉTODO QUE MUESTRA UNA TRANSACCIÓN POR FECHA
      *
+     * METHOD THAT DISPLAYS A TRANSACTION BY DATE
+     *
      * @param dateTransaction
      * @return
      * @throws ServiceError
@@ -218,6 +230,8 @@ public class TransactionService {
     /**
      * MÉTODO QUE MUESTRA UNA TRANSACCIÓN POR TIPO
      *
+     * METHOD THAT DISPLAYS ONE TRANSACTION BY TYPE
+     *
      * @param type
      * @return
      * @throws ServiceError
@@ -233,6 +247,8 @@ public class TransactionService {
 
     /**
      * MÉTODO QUE MUESTRA UNA LISTA DE TODAS LAS TRANSACCIONES DEL CLIENTE
+     *
+     * METHOD THAT DISPLAYS A LIST OF ALL CUSTOMER TRANSACTIONS
      *
      * @param id
      * @return
@@ -251,6 +267,8 @@ public class TransactionService {
     /**
      * MÉTODO QUE MUESTRA UNA LISTA DE TRANSACCIONES POR CADA TARJETA
      *
+     * METHOD THAT DISPLAYS A LIST OF TRANSACTIONS FOR EACH CARD
+     *
      * @param id
      * @return
      * @throws ServiceError
@@ -267,6 +285,8 @@ public class TransactionService {
 
     /**
      * MÉTODO PARA DAR DE ALTA UNA TRANSACCIÓN
+     *
+     * METHOD TO ENABLE A TRANSACTION
      *
      * @param id
      * @throws ServiceError
@@ -286,6 +306,8 @@ public class TransactionService {
     /**
      * MÉTODO PARA DAR DE BAJA UNA TRANSACCIÓN
      *
+     * METHOD TO DISABLE A TRANSACTION
+     *
      * @param id
      * @throws ServiceError
      */
@@ -304,6 +326,8 @@ public class TransactionService {
     /**
      * MÉTODO PARA MOSTRAR LAS TRANSACCIONES POR ESTADO DE ALTAS
      *
+     * METHOD FOR DISPLAYING ENABLED TRANSACTIONS
+     *
      * @return
      * @throws ServiceError
      */
@@ -319,6 +343,8 @@ public class TransactionService {
 
     /**
      * MÉTODO PARA MOSTRAR LAS TRANSACCIONES POR ESTADO DE BAJAS
+     *
+     * METHOD FOR DISPLAYING DISABLED TRANSACTIONS
      *
      * @return
      * @throws ServiceError

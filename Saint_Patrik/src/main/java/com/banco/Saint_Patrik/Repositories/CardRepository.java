@@ -10,27 +10,66 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CardRepository extends JpaRepository<Card, String> {
 
-    //BUSCO TODAS LAS TARJETAS ORDENADAS POR NÚMERO DE TARJETA
+    /**
+     * BUSCAR TODAS LAS TARJETAS ORDENADAS POR NÚMERO DE TARJETA
+     *
+     * SEARCH ALL CARDS SORTED BY CARD NUMBER
+     *
+     * @return
+     */
     @Query("SELECT c FROM Card c ORDER BY c.numberCard")
     public List<Card> searchAll();
 
-    //BUSCO LA TARJETA POR ID DE TARJETA
+    /**
+     * BUSCAR UNA TARJETA POR ID DE TARJETA
+     *
+     * SEARCH FOR A CARD BY CARD ID
+     *
+     * @param id
+     * @return
+     */
     @Query("SELECT c FROM Card c WHERE c.id = :id")
     public Card searchById(@Param("id") String id);
 
-    //BUSCO TARJETAS POR "ALTA"
+    /**
+     * BUSCAR TARJETAS HABILITDAS
+     *
+     * SEARCH FOR ENABLED CARDS
+     *
+     * @return
+     */
     @Query("SELECT c from Card c WHERE c.enabled = true ORDER BY c.numberCard ASC")
     public List<Card> searchCardByEnabled();
 
-    //BUSCO TARJETAS POR "BAJA"
+    /**
+     * BUSCAR TARJETAS DESHABILITDAS
+     *
+     * SEARCH FOR DISABLED CARDS
+     *
+     * @return
+     */
     @Query("SELECT c from Card c WHERE c.enabled = false ORDER BY c.numberCard ASC")
     public List<Card> searchCardByDisabled();
 
-    //BUSCO TARJETAS POR NUMERO DE TARJETA
+    /**
+     * BUSCAR TARJETAS POR NUMERO DE TARJETA
+     *
+     * SEARCH CARDS BY CARD NUMBER
+     *
+     * @param NumberCard
+     * @return
+     */
     @Query("SELECT c from Card c WHERE c.numberCard = :NumberCard")
     public Card searchCardByNumberCard(@Param("NumberCard") String NumberCard);
 
-    //BUSCO TARJETAS POR USUARIO
+    /**
+     * BUSCAR TARJETAS POR USUARIO
+     *
+     * SEARCH CARDS BY USER
+     *
+     * @param id
+     * @return
+     */
     @Query("SELECT c from Card c WHERE c.user.id = :id")
     public Card searchCardByUser(@Param("id") String id);
 }

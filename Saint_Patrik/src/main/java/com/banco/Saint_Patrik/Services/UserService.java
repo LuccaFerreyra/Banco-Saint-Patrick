@@ -20,6 +20,9 @@ public class UserService {
     private CardRepository cardRepository;
 
     /**
+     * MÉTODO PARA MOSTRAR LAS TARJETAS DE UN USUARIOS
+     *
+     * METHOD FOR DISPLAYING A USER'S CARDS
      *
      * @param idUser
      * @return
@@ -32,6 +35,8 @@ public class UserService {
     /**
      * MÉTODO PARA MOSTRAR LOS USUARIOS POR ESTADO DE ALTAS
      *
+     * METHOD FOR DISPLAYING ENABLED USERS
+     *
      * @return
      */
     @Transactional(readOnly = true)
@@ -41,6 +46,8 @@ public class UserService {
 
     /**
      * MÉTODO PARA MOSTRAR LOS USUARIOS POR ESTADO DE BAJAS
+     *
+     * METHOD FOR DISPLAYING DISABLED USERS
      *
      * @return
      * @throws com.banco.Saint_Patrik.Errors.ServiceError
@@ -55,6 +62,8 @@ public class UserService {
 
     /**
      * METODO PARA TRAER UN USUARIO ESPECIFICO
+     *
+     * METHOD TO BRING A SPECIFIC USER
      *
      * @param idUser
      * @throws com.banco.Saint_Patrik.Errors.ServiceError

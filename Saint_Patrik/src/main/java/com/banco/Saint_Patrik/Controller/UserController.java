@@ -18,7 +18,15 @@ public class UserController {
     @Autowired
     private UserService service;
 
-//TODAS LAS TARJETAS QUE POSEE UN USUARIO
+    /**
+     * TODAS LAS TARJETAS QUE POSEE UN USUARIO
+     *
+     * ALL CARDS OWNED BY A USER
+     *
+     * @param model
+     * @param idUser
+     * @return
+     */
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/cards")
     public String cards(ModelMap model, @Param("idUser") String idUser) {
@@ -26,7 +34,14 @@ public class UserController {
         return "html";
     }
 
-//LISTA DE USUARIOS HABILITADOS
+    /**
+     * LISTA DE USUARIOS HABILITADOS
+     *
+     * LIST OF ENABLED USERS
+     *
+     * @param model
+     * @return
+     */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/userList")
     public String usersEnabled(ModelMap model) {
@@ -34,7 +49,15 @@ public class UserController {
         return "html";
     }
 
-//LISTA DE USUARIOS DE BAJA
+    /**
+     * LISTA DE USUARIOS DE BAJA
+     *
+     * LIST OF DISABLED USERS
+     *
+     * @param model
+     * @return
+     * @throws ServiceError
+     */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/usersDisabled")
     public String usersDisabled(ModelMap model) throws ServiceError {
@@ -46,7 +69,16 @@ public class UserController {
         return "html";
     }
 
-//BUSCA UN USUARIO ESPECIFICO
+    /**
+     * BUSCA UN USUARIO ESPECIFICO
+     *
+     * FIND A SPECIFIC USER
+     *
+     * @param model
+     * @param idUser
+     * @return
+     * @throws ServiceError
+     */
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/usersSearch")
     public String user(ModelMap model, @RequestParam String idUser) throws ServiceError {
