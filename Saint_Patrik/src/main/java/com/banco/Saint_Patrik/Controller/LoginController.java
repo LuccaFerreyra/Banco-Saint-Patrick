@@ -10,12 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
-   
-
-    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
-    @GetMapping("/main")
-    public String main() {
-        return "index.html";
+    @GetMapping("/")
+    public String home() {
+        return "home.html";
     }
 
     @GetMapping("/login")
@@ -29,5 +26,11 @@ public class LoginController {
             model.put("logout", "SUCCESSFULLY EXITED THE PLATFORM"); //hay que mostrarlo en la vista login.html
         }
         return "login.html";
+    }
+    
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+    @GetMapping("/main")
+    public String main() {
+        return "index.html";
     }
 }

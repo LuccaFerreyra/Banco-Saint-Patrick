@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+@PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -27,7 +28,7 @@ public class UserController {
      * @param idUser
      * @return
      */
-    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
+    
     @GetMapping("/cards")
     public String cards(ModelMap model, @Param("idUser") String idUser) {
         model.addAttribute("cards", service.cardsFromUser(idUser));

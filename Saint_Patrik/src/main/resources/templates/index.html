@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>St Patrick's Bank</title>
-    <link rel="shortcut icon" href="img/logo.png">
-    <link rel="stylesheet" href="css/styleII.css">
+    <link rel="shortcut icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/styleII.css">
+    <link rel="stylesheet" href="/css/four.css">    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&family=Roboto:wght@100;500&display=swap" rel="stylesheet">
@@ -22,9 +23,10 @@
             <div class="navar">
                 <nav>
                 
-                    <a href="#" class="active">Home</a> 
-                    <a href="#">Transactions</a>
-                    <a href="#">Transfer</a>                
+                    <a th:href="@{/}" class="active">Home</a> 
+                    <a th:href="@{/transactions}">Transactions</a>
+                    <a th:href="@{/transfer}">Transfer</a> 
+                    <a href="/logout" th:if="${session.cardSession != null}">Exit</a>
                     <!-- <ion-icon name="search-sharp"></ion-icon>
                     <ion-icon name="help-circle-sharp"></ion-icon>
                     <ion-icon name="close-circle-sharp"></ion-icon>
@@ -86,7 +88,7 @@
     <footer>
         <div class="footer_logo">
             <div class="copy">
-                <!-- <img src="img/logo.png" alt=""> -->
+                
               <h3>Copyright @ 2022 St Patrick's Bank</h3>
             </div>
             

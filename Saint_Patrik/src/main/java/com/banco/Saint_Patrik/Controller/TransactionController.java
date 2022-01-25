@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+@PreAuthorize("hasAnyRole('ROLE_USUARIO','ROLE_CLIENTE')")
 @Controller
 @RequestMapping("/transactions")
 public class TransactionController {
@@ -31,7 +32,11 @@ public class TransactionController {
 
     @Autowired
     private TransactionService transactionService;
-
+    
+    @GetMapping("/transactions")
+    public String transactions(){
+        return "transactions.html";
+    }
     /**
      * MÉTODO PARA REALIZAR UNA TRANSACCIÓN
      *
