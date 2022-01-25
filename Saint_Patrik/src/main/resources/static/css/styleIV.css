@@ -1,5 +1,5 @@
 
-/* Creamos nuestras variables, mediante :root accedemos a la ruta de css */
+
 :root{
     --yellow: #f0c44e;
     --blue-green-dark: #095757;
@@ -8,7 +8,7 @@
     --light-blue:#78b4b6;
 }
 
-/* Para que en todos los navegadores se vea igual */
+
 *{
     margin: 0;
     padding: 0;
@@ -34,7 +34,7 @@ header{
     
 }
 
-/* Para acceder al header del contenedor */
+
 header .container{
     display: flex;
     justify-content: space-between; 
@@ -56,7 +56,7 @@ header .container h2{
 }
 
 header .logo{
-    /* Para quitarle las negritas usamos un font-weight normal */
+    
     font-weight: normal; 
     color: #000;
     font-size: 40px;
@@ -75,13 +75,11 @@ header .navar a{
     margin-right: 75px;
     margin-left: -50px;    
     color: #aaa;
-    
-    /* text decoration para quitarle los subrayados */
     text-decoration: none;   
     
 }
 
-/* El primer enlace activo, mientras que si paso el cursor sobre los otros habrá un efecto hover*/
+
 header nav a:hover,
 header nav a.active{
     
@@ -105,7 +103,7 @@ main{
     
 }
 
-/* Para acceder al header del contenedor */
+
 
 
 

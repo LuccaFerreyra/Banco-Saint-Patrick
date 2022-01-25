@@ -39,14 +39,14 @@ public class CardController {
     @GetMapping("/credit")
     public String cardCredit(HttpSession session, ModelMap model, @RequestParam(required = false) String cardId) throws ServiceError {
 
-        User login = (User) session.getAttribute("usersession"); //con esto si el id de login logueado viene nulo, no ejecuta el metodo
+        User login = (User) session.getAttribute("cardSession"); //con esto si el id de login logueado viene nulo, no ejecuta el metodo
         if (login == null) {
             return "redirect:/login";
         }
         Double creditCard = cardService.searchcardAmountByIdCard(cardId);
         model.addAttribute("credit", creditCard);
 
-        return "html";
+        return "index.html";
     }
 
     /**

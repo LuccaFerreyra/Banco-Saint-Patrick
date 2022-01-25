@@ -1,41 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>St Patrick's Bank</title>
-    <link rel="shortcut icon" href="img/logo.png">
-    <link rel="stylesheet" href="css/styleIII.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&family=Roboto:wght@100;500&display=swap" rel="stylesheet">
-    <link href="css/four.css" rel="stylesheet">	
-</head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/head :: head"></head>
 <body>
     <!-- HEADER -->
   
-    <header>
-        <div class="container">
-            <img src="img/logo.png" alt="" >
-            <h2 class="logo">St Patrick's Bank</h2>
-            <div class="navar">
-                <nav>
-                
-                    <a href="#">Home</a> 
-                    <a href="#" class="active">Transactions</a>
-                    <a href="#">Transfer</a>                
-                    <!-- <ion-icon name="search-sharp"></ion-icon>
-                    <ion-icon name="help-circle-sharp"></ion-icon>
-                    <ion-icon name="close-circle-sharp"></ion-icon>
-                     -->
-                    
-                   
-                </nav>
-            </div>
-        </div>
-        
-    </header>
+     <header th:replace="/fragments/header :: header"></header>
     <br>
     <br>
     <!-- MAIN -->
@@ -75,15 +44,10 @@
     </div>
        
     
-    <footer>
-        <div class="footer_logo">
-            <img src="img/logo.png" alt="">
-            <h3>St Patrick's Bank</h3>
-        </div>
-    </footer>
+     <footer th:replace="/fragments/footer :: footer"></footer>
+   
 
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+   <script th:replace="/fragments/script :: script"></script>
 </body>
 </html>

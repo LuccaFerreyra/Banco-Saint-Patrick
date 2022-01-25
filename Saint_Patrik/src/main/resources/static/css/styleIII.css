@@ -1,4 +1,4 @@
-/* Creamos nuestras variables, mediante :root accedemos a la ruta de css */
+
 :root{
     --yellow: #f0c44e;
     --blue-green-dark: #095757;
@@ -7,7 +7,7 @@
     --light-blue:#78b4b6;
 }
 
-/* Para que en todos los navegadores se vea igual */
+
 *{
     margin: 0;
     padding: 0;
@@ -33,7 +33,7 @@ header{
     
 }
 
-/* Para acceder al header del contenedor */
+
 header .container{
     display: flex;
     justify-content: space-between; 
@@ -55,7 +55,7 @@ header .container h2{
 }
 
 header .logo{
-    /* Para quitarle las negritas usamos un font-weight normal */
+
     font-weight: normal; 
     color: #000;
     font-size: 40px;
@@ -74,13 +74,11 @@ header .navar a{
     margin-right: 75px;
     margin-left: -50px;    
     color: #aaa;
-    
-    /* text decoration para quitarle los subrayados */
     text-decoration: none;   
     
 }
 
-/* El primer enlace activo, mientras que si paso el cursor sobre los otros habrá un efecto hover*/
+
 header nav a:hover,
 header nav a.active{
     
@@ -102,10 +100,10 @@ header nav a.active{
 
 section .operation{
     padding: 30px 0;
-    margin: 0px;
-    background: #fff;
-    margin-left: 90px;
-    margin-right: 100px;
+    margin: 0;
+    background: #fff;    
+    margin-left: 50px;
+    margin-right: 150px;
     border-top: 1px solid var(--blue-green-dark);
     border-right: 1px solid var(--blue-green-dark);
     border-bottom: 1px solid var(--blue-green-dark);
@@ -151,12 +149,12 @@ section .operation{
 
 /* Btn */
 
-section .btn{
+section .btn-t{
     display: flex;
 	align-items: center; 
     justify-content: center; 
 	margin-top: 2em;
-	margin-left: 29.5em;
+	margin-left: 25.9em;
 	width: 27%;
 	height: 50px;
 	background: #000;
@@ -175,7 +173,7 @@ section .btn{
     
 }
 
-section .btn:hover{
+section .btn-t:hover{
     color: #000;
     filter: drop-shadow(0 0 5px var(--yellow)) drop-shadow(0 0 15px var(--yellow));
 }

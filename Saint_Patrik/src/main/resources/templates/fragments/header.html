@@ -1,0 +1,22 @@
+<header>
+        <div class="container">
+            <img src="img/logo.png" alt="" >
+            <h2 class="logo">St Patrick's Bank</h2>
+            <div class="navar">
+                <nav>
+                
+                    <a th:href="@{/main}" class="active">Home</a> 
+                    <a th:href="@{/transactions}" th:if="${session.cardSession != null}">Transactions</a>
+                    <a th:href="@{/transfer}">Transfer</a> 
+                    <a href="/logout" th:if="${session.cardSession != null}">Exit</a>
+                    <!-- <ion-icon name="search-sharp"></ion-icon>
+                    <ion-icon name="help-circle-sharp"></ion-icon>
+                    <ion-icon name="close-circle-sharp"></ion-icon>
+                     -->
+                    
+                   
+                </nav>
+            </div>
+        </div>
+        
+    </header>

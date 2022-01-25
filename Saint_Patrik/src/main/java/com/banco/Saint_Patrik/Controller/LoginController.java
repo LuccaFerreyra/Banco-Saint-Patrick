@@ -15,6 +15,7 @@ public class LoginController {
         return "home.html";
     }
 
+    
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String error, 
             @RequestParam(required = false) String logout, ModelMap model) {
@@ -32,5 +33,10 @@ public class LoginController {
     @GetMapping("/main")
     public String main() {
         return "index.html";
+    }
+    
+    @GetMapping("/transactions")
+    public String goTransactions() {
+        return "transaction.html";
     }
 }

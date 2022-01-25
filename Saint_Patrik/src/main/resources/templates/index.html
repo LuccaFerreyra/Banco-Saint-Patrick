@@ -1,43 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>St Patrick's Bank</title>
-    <link rel="shortcut icon" href="/img/logo.png">
-    <link rel="stylesheet" href="/css/styleII.css">
-    <link rel="stylesheet" href="/css/four.css">    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&family=Roboto:wght@100;500&display=swap" rel="stylesheet">
-    
-</head>
+<head th:replace="/fragments/head :: head"></head>
 <body>
     <!-- HEADER -->
   
-    <header>
-        <div class="container">
-            <img src="img/logo.png" alt="" >
-            <h2 class="logo">St Patrick's Bank</h2>
-            <div class="navar">
-                <nav>
-                
-                    <a th:href="@{/}" class="active">Home</a> 
-                    <a th:href="@{/transactions}">Transactions</a>
-                    <a th:href="@{/transfer}">Transfer</a> 
-                    <a href="/logout" th:if="${session.cardSession != null}">Exit</a>
-                    <!-- <ion-icon name="search-sharp"></ion-icon>
-                    <ion-icon name="help-circle-sharp"></ion-icon>
-                    <ion-icon name="close-circle-sharp"></ion-icon>
-                     -->
-                    
-                   
-                </nav>
-            </div>
-        </div>
-        
-    </header>
+    <header th:replace="/fragments/header :: header"></header>
     <br>
     <br>
     <!-- MAIN -->
@@ -46,7 +13,7 @@
         
             <div class="balance">
                 <h3>My balance</h3>
-                <h2>1640.00 <span>USD</span></h2>   
+                <h2  th:if="${session.cardSession != null}" th:text="${session.cardSession.credit} +' USD'"> <span>USD</span></h2>   
             </div>       
 
          </main>
@@ -75,7 +42,7 @@
                      <h5>11 dec 2021</h5>                                                                                                     
                  </div>                                                                                                     
                  </div>
-                 <button class="btn"><ion-icon name="chevron-down-sharp" style="font-size: 30px; margin: auto; margin-top: 1px; transition: 0.5s;"></ion-icon></button>
+                 <!--<button class="btn"><ion-icon name="chevron-down-sharp" style="font-size: 30px; margin: auto; margin-top: 1px; transition: 0.5s;"></ion-icon></button>-->
      
                  <button class="btn-t four"><span style="color:#000">New Transfer</span></button>
          </section>
@@ -84,19 +51,9 @@
          
     </div>
        
+    <footer th:replace="/fragments/footer :: footer"></footer>
+   
+    <script th:replace="/fragments/script :: script"></script>
     
-    <footer>
-        <div class="footer_logo">
-            <div class="copy">
-                
-              <h3>Copyright @ 2022 St Patrick's Bank</h3>
-            </div>
-            
-        </div>
-    </footer>
-
-
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

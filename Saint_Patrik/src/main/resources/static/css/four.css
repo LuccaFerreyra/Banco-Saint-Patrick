@@ -17,5 +17,10 @@
 	background: rgba(163, 122, 9, 0.795);
 }
 
-/*.boton.cuatro:hover 
-	/* background: #960909;/* /*
+ /* To remove the underline from links*/
+/* Para quitarle el subrayado a los enlaces*/
+a:link, a:visited,  a:hover, a:active
+{
+    color: #000000;
+    text-decoration: none;
+}

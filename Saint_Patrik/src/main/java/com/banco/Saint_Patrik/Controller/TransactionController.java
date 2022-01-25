@@ -34,8 +34,8 @@ public class TransactionController {
     private TransactionService transactionService;
     
     @GetMapping("/transactions")
-    public String transactions(){
-        return "transactions.html";
+    public String goTransactions(){
+        return "transaction.html";
     }
     /**
      * MÉTODO PARA REALIZAR UNA TRANSACCIÓN

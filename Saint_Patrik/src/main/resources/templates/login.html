@@ -36,8 +36,8 @@
                             
 							<div class="card-body">
 								<form action="/logincheck" method="POST">
-                                                                    <p th:if="${error != null}" th:text="${error}" style="color:red; font-size:  11px; margin-bottom: -12px"></p>
-                                                                     <p th:if="${logout != null}" th:text="${logout}" style="color:green; font-size: 11px;margin-bottom: -12px"></p>
+                                                                    <p th:if="${error != null}" th:text="${error}" style="transition: .5s ease-in-out all; color:red; font-size:  11px; margin-bottom: -12px ; "></p>
+                                                                     <p th:if="${logout != null}" th:text="${logout}" style="transition: .5s ease-in-out all;color:green; font-size: 11px;margin-bottom: -12px;"></p>
 									<div class="form-group">
 										<label for="cardNumber" style="color: #fff; display: flex; justify-content: left;">Card Number :</label>
 										<input id="cardNumber" type="text" name="cardNumber" class="form-control" placeholder="Type the card number" >
